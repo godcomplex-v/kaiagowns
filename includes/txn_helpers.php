@@ -10,11 +10,11 @@ function calc_penalty(string $due, ?string $ret=null): float {
 }
 function decrement_stock(int $item_id, int $staff_id, string $reason): void {
     get_db()->prepare('UPDATE items SET stock=GREATEST(0,stock-1) WHERE id=:id')->execute([':id'=>$item_id]);
-    get_db()->prepare('INSERT INTO stock_history (item_id,'change',reason,staff_id) VALUES (:i,-1,:r,:s)')->execute([':i'=>$item_id,':r'=>$reason,':s'=>$staff_id]);
+    get_db()->prepare('INSERT INTO stock_history (item_id, `change`, reason , staff_id) VALUES (:i,-1,:r,:s)')->execute([':i'=>$item_id,':r'=>$reason,':s'=>$staff_id]);
 }
 function increment_stock(int $item_id, int $staff_id, string $reason): void {
     get_db()->prepare('UPDATE items SET stock=stock+1 WHERE id=:id')->execute([':id'=>$item_id]);
-    get_db()->prepare('INSERT INTO stock_history (item_id,'change',reason,staff_id) VALUES (:i,1,:r,:s)')->execute([':i'=>$item_id,':r'=>$reason,':s'=>$staff_id]);
+    get_db()->prepare('INSERT INTO stock_history (item_id, `change` ,reason, staff_id) VALUES (:i,1,:r,:s)')->execute([':i'=>$item_id,':r'=>$reason,':s'=>$staff_id]);
 }
 function notify_user(int $uid, string $msg, string $type='info'): void {
     get_db()->prepare('INSERT INTO notifications (user_id,message,type) VALUES (:u,:m,:t)')->execute([':u'=>$uid,':m'=>$msg,':t'=>$type]);
