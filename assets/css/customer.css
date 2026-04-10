@@ -1,0 +1,4 @@
+.sidebar--customer{background:var(--cust-primary);color:#fff}
+.sidebar--customer .sidebar__brand{color:#fff}
+.sidebar--customer .nav-link{color:rgba(255,255,255,.9)}
+.sidebar--customer .nav-link:hover,.sidebar--customer .nav-link.active{background:rgba(255,255,255,.2);color:#fff}

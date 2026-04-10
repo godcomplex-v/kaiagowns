@@ -1,0 +1,4 @@
+.sidebar--staff{background:var(--staff-primary);color:#fff}
+.sidebar--staff .sidebar__brand{color:#fff}
+.sidebar--staff .nav-link{color:rgba(255,255,255,.85)}
+.sidebar--staff .nav-link:hover,.sidebar--staff .nav-link.active{background:rgba(255,255,255,.18);color:#fff}

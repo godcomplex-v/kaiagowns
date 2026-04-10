@@ -1,0 +1,4 @@
+.sidebar--admin{background:var(--admin-primary);color:#e8e8f0}
+.sidebar--admin .sidebar__brand{color:var(--admin-accent)}
+.sidebar--admin .nav-link{color:#cbd5e1}
+.sidebar--admin .nav-link:hover,.sidebar--admin .nav-link.active{background:rgba(201,168,76,.15);color:var(--admin-accent)}

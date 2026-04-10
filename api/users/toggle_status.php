@@ -1,0 +1,21 @@
+<?php
+declare(strict_types=1);
+require_once __DIR__.'/../../includes/config.php';
+require_once __DIR__.'/../../includes/db.php';
+require_once __DIR__.'/../../includes/session_guard.php';
+require_once __DIR__.'/../../includes/functions.php';
+require_once __DIR__.'/../../includes/log_activity.php';
+session_guard('admin');
+if($_SERVER['REQUEST_METHOD']!=='POST') json_response(['success'=>false],405);
+$id=(int)($_POST['id']??0); $action=trim($_POST['action']??'');
+if($id<=0||!in_array($action,['activate','deactivate'],true)) json_response(['success'=>false,'message'=>'Invalid request.'],400);
+$new=$action==='activate'?'active':'inactive';
+$chk=get_db()->prepare("SELECT id,name FROM users WHERE id=:id AND role='customer' LIMIT 1");
+$chk->execute([':id'=>$id]); $user=$chk->fetch();
+if(!$user) json_response(['success'=>false,'message'=>'Customer not found.'],404);
+get_db()->prepare("UPDATE users SET status=:s WHERE id=:id")->execute([':s'=>$new,':id'=>$id]);
+log_activity('toggle_customer_status',"Customer ID={$id} ({$user['name']}) → {$new}");
+$rs=get_db()->prepare("SELECT id,name,email,phone,status,created_at FROM users WHERE id=:id");
+$rs->execute([':id'=>$id]); $c=$rs->fetch();
+ob_start(); require __DIR__.'/../../admin/users/partials/customer_row.php'; $html=ob_get_clean();
+json_response(['success'=>true,'html'=>$html,'status'=>$new]);

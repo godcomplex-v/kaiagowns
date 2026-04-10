@@ -1,0 +1,116 @@
+/* assets/css/staff_dash.css */
+
+/* ── Staff stats bar override ── */
+.staff-stats { margin-bottom: 1.5rem; }
+.staff-stats .stat-card { cursor: default; }
+.staff-stats .stat-card:hover { transform: none; box-shadow: var(--shadow-sm); }
+
+/* ── Dashboard grid ── */
+.staff-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+    align-items: start;
+}
+@media (max-width: 860px) {
+    .staff-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Dash card ── */
+.dash-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+.dash-card--wide { grid-column: 1 / -1; }
+.dash-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .85rem 1.1rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+}
+.dash-card__header h4 { font-size: .9rem; font-weight: 700; }
+.dash-empty {
+    padding: 1.5rem;
+    color: var(--text-muted);
+    font-size: .875rem;
+    text-align: center;
+}
+
+/* ── Overdue list ── */
+.overdue-list   { list-style: none; padding: .5rem .75rem; display: flex; flex-direction: column; gap: .45rem; }
+.overdue-item   { display: flex; justify-content: space-between; align-items: center; gap: .5rem; }
+.overdue-info   { display: flex; flex-direction: column; }
+.overdue-name   { font-size: .875rem; font-weight: 500; }
+.overdue-customer { font-size: .78rem; color: var(--text-muted); }
+
+/* ── Notification badge in sidebar ── */
+.notif-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+    border-radius: 999px;
+    background: #ef4444;
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 700;
+    margin-left: .4rem;
+    vertical-align: middle;
+}
+
+/* ── Sidebar notification list (dashboard panel) ── */
+.notif-list     { list-style: none; padding: .5rem .75rem; display: flex; flex-direction: column; gap: .4rem; }
+.notif-item     {
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+    padding: .5rem .6rem;
+    border-radius: 6px;
+    border-left: 3px solid var(--border);
+    background: var(--bg);
+    font-size: .83rem;
+}
+.notif-item--approved       { border-left-color: #16a34a; }
+.notif-item--rejected       { border-left-color: #dc2626; }
+.notif-item--return_received{ border-left-color: #0e6673; }
+.notif-item--completed      { border-left-color: #4338ca; }
+.notif-item--overdue        { border-left-color: #f97316; }
+.notif-msg      { color: var(--text-main); }
+.notif-time     { font-size: .75rem; color: var(--text-muted); }
+
+/* ── Full notifications page ── */
+.notif-full-list { display: flex; flex-direction: column; gap: .5rem; margin-top: .75rem; }
+.notif-full-item {
+    display: flex;
+    align-items: flex-start;
+    gap: .85rem;
+    padding: .9rem 1.1rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: background .15s;
+}
+.notif-full-item--unread {
+    background: #f0f9ff;
+    border-left: 3px solid var(--staff-primary);
+}
+.notif-full-icon { font-size: 1.3rem; line-height: 1; flex-shrink: 0; margin-top: .1rem; }
+.notif-full-body { flex: 1; display: flex; flex-direction: column; gap: .2rem; }
+.notif-full-msg  { font-size: .9rem; color: var(--text-main); }
+.notif-full-time { font-size: .78rem; color: var(--text-muted); }
+
+/* ── Badge extras for transaction statuses ── */
+.badge--active    { background: #dbeafe; color: #1e40af; }
+.badge--overdue   { background: #fee2e2; color: #991b1b; }
+.badge--returned  { background: #dcfce7; color: #166534; }
+.badge--completed { background: #ede9fe; color: #4338ca; }
+.badge--rejected  { background: #fee2e2; color: #991b1b; }
+.badge--cancelled { background: #f1f5f9; color: #475569; }

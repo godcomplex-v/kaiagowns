@@ -1,0 +1,15 @@
+.stats-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.75rem;margin-bottom:1.5rem}
+.stat-card{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:.9rem .5rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface);text-decoration:none;color:var(--text-main);transition:box-shadow .15s,transform .12s;box-shadow:var(--shadow-sm)}
+.stat-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.stat-num{font-size:1.75rem;font-weight:800;line-height:1}.stat-label{font-size:.75rem;color:var(--text-muted);margin-top:.2rem;text-align:center}
+.stat-card--pending .stat-num{color:#854d0e}.stat-card--active .stat-num{color:#0369a1}.stat-card--overdue .stat-num{color:#991b1b}
+.stat-card--returned .stat-num{color:#166534}.stat-card--completed .stat-num{color:#4338ca}.stat-card--sales .stat-num{color:#0e6673}
+.txn-tab-bar{display:flex;gap:.25rem;flex-wrap:wrap;border-bottom:2px solid var(--border);margin-bottom:1.25rem}
+.customer-cell{display:flex;flex-direction:column}.customer-name{font-weight:500}.customer-sub{font-size:.8rem;color:var(--text-muted)}
+.badge--type-rent{background:#dbeafe;color:#1e40af}.badge--type-sale{background:#fce7f3;color:#9d174d}.badge--out-of-stock{background:#fee2e2;color:#991b1b;font-size:.78rem}
+.due-warning td{background:#fffbeb}.due-critical td{background:#fef2f2}.overdue-row td{background:#fef2f2}
+.days-pill{display:inline-block;padding:.2rem .6rem;border-radius:999px;font-size:.8rem;font-weight:600;background:#e0f2fe;color:#0369a1}
+.days-pill.due-warning{background:#fef9c3;color:#854d0e}.days-pill.due-critical{background:#fee2e2;color:#991b1b}
+.penalty-amt{color:#991b1b;font-weight:700}
+.penalty-notice{display:flex;gap:1.5rem;background:#fef2f2;border:1px solid #fecaca;border-radius:var(--radius);padding:.65rem 1rem;margin-top:.75rem;font-size:.9rem}
+.modal-note{font-size:.85rem;color:var(--text-muted);margin-top:.35rem}
