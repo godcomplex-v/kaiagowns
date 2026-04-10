@@ -16,7 +16,7 @@ if($new<0) json_response(['success'=>false,'errors'=>['change'=>"Cannot reduce b
 $db->beginTransaction();
 try {
     $db->prepare('UPDATE items SET stock=:s WHERE id=:id')->execute([':s'=>$new,':id'=>$item_id]);
-    $db->prepare('INSERT INTO stock_history (item_id,change,reason,staff_id) VALUES (:i,:c,:r,:s)')->execute([':i'=>$item_id,':c'=>$change,':r'=>$reason,':s'=>$_SESSION['user_id']]);
+    $db->prepare('INSERT INTO stock_history (item_id,`change`,reason,staff_id) VALUES (:i,:c,:r,:s)')->execute([':i'=>$item_id,':c'=>$change,':r'=>$reason,':s'=>$_SESSION['user_id']]);
     $db->commit();
 } catch(Exception $e){$db->rollBack();error_log($e->getMessage());json_response(['success'=>false,'message'=>'Database error.'],500);}
 log_activity('adjust_stock',"Item ID={$item_id} change={$change} new={$new}");
