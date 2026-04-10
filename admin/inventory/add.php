@@ -34,7 +34,8 @@ if(is_post()){
         $db->prepare('INSERT INTO items (name,category_id,size,stock,rental_price,sale_price,status,image,description) VALUES (:n,:c,:s,:st,:r,:sa,:status,:img,:desc)')
            ->execute([':n'=>$old['name'],':c'=>$old['category_id'],':s'=>$old['size']?:null,':st'=>(int)$old['stock'],':r'=>(float)$old['rental_price'],':sa'=>(float)$old['sale_price'],':status'=>$old['status'],':img'=>$img,':desc'=>$old['description']?:null]);
         $nid=(int)$db->lastInsertId();
-        if((int)$old['stock']>0) $db->prepare('INSERT INTO stock_history (item_id, `change` ,reason,staff_id) VALUES (:i,:c,:r,:s)')->execute([':i'=>$nid,':c'=>(int)$old['stock'],':r'=>'Initial stock on item creation',':s'=>$_SESSION['user_id']]);
+        if((int)$old['stock']>0) $db->prepare('INSERT INTO stock_history (item_id, `change`, reason, staff_id) VALUES (:i, :c, :r, :s)')->execute([':i'=>$nid,':c'=>(int)$old['stock'],':r'=>'Initial stock on item creation',':s'=>$_SESSION['user_id']]);
+
         log_activity('add_item',"Item ID={$nid} name={$old['name']}");
         redirect(APP_URL.'/admin/inventory/index.php?added=1');
     }
