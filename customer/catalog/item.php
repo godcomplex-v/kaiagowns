@@ -216,7 +216,7 @@ $active_nav   = 'catalog';
                                 <span id="amtHint" class="field-hint"></span>
                             </label>
                             <input type="number" id="amount_paid" name="amount_paid"
-                                   value="<?= e(post('amount_paid') ?: number_format($item['rental_price'], 2)) ?>"
+                                   value="<?= e(post('amount_paid') ?: number_format((float)$item['rental_price'], 2)) ?>"
                                    min="0" step="0.01" required>
                         </div>
 
